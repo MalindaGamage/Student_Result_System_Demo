@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- declares the XML version and encoding used in the file. -->
+<!-- defines the project's metadata and configuration.
+The xmlns attribute specifies the default XML namespace for Maven POM files. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>  <!-- The POM model version being used -->
+    <groupId>adl.axiatadigitallabs</groupId> <!-- The group ID, which typically represents the organization or project group. -->
+    <artifactId>Student_Result_Manager</artifactId><!-- represents the specific project/module name -->
+    <version>1.0-SNAPSHOT</version><!-- The version of the project. In this case, it's set to 1.0-SNAPSHOT, indicating an initial development version -->
+
+    <!-- Various property definitions -->
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <vertx.version>4.4.4</vertx.version>
+        <main.verticle>com.demo.vertx.HttpServerVerticle</main.verticle>
+        <log4j.version>2.17.1</log4j.version>
+        <slf4j.version>1.7.32</slf4j.version>
+    </properties>
+
+    <!-- Various dependency declarations -->
+    <dependencies>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-core</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+
+        <!-- Vert.x web -->
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-web</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+
+        <!-- Vert.x configuration -->
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-config</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-sql-client</artifactId>
+            <version>${vertx.version}</version>
+        </dependency><!-- Vert.x SQL client -->
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-mysql-client</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-jdbc-client</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.28</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>3.19.6</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.16.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.vertx/vertx-web-client -->
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-web-client</artifactId>
+            <version>4.4.4</version>
+        </dependency>
+    </dependencies>
+
+    <!-- Build configuration includes the Vert.x Maven plugin configuration, which
+    specifies the Vert.x launcher, main class, build directory, and other settings.
+    The plugin is used for tasks like initializing, packaging, and running the application.-->
+    <build>
+        <plugins>
+            <!-- Vert.x Maven plugin -->
+            <plugin>
+                <groupId>io.reactiverse</groupId>
+                <artifactId>vertx-maven-plugin</artifactId>
+                <version>1.0.24</version>
+                <executions>
+                    <execution>
+                        <id>vmp</id>
+                        <goals>
+                            <goal>initialize</goal>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <redeploy>true</redeploy>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- The pom.xml file is an XML file used by Maven to manage
+    the project's dependencies, plugins, and build configuration -->
+
+</project>
